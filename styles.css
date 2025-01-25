@@ -5,20 +5,22 @@
 body {
     overflow-x: hidden;
     font-family: Arial, sans-serif;
-    background-color: gray;
+
 }
 
 body,
 html {
     padding: 0;
     margin: 0;
+    
 }
 
 /* Global */
 .container-shadow {
     flex: 1 1 60%;
     padding: 20px;
-    background-color: #f4f4f4;
+    /* background-color: rgba(48, 0, 0, .1); */
+    background-color: whitesmoke;
 
 }
 
@@ -45,7 +47,7 @@ html {
     grid-gap: 10px;
 
     padding: 10px;
-
+    background-color: rgba(48, 0, 0, .6);
 
 }
 
@@ -159,7 +161,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #333;
+    background-color: rgba(48,0,0,1);
     color: white;
     padding: 10px 20px;
 }
@@ -178,12 +180,16 @@ html {
     font-size: 24px;
     cursor: pointer;
 }
-
+.float-bottom{
+    position: absolute;
+    bottom: 5px;
+}
 /* End Navbar */
 
 /* Sidebar */
 .sidebar-scroll-bar{
     width: 250px;
+    background-color: rgba(48, 0, 0, 1);
 }
 .sidebar-scroll-bar::-webkit-scrollbar {
     width: 5px; /* Scrollbar width */
@@ -204,9 +210,12 @@ html {
     padding: 0;
     margin-left: -10px;
     margin-top: -10px;
+    background-color: rgba(48, 0, 0, 1);
+    
 
 }
 .sidebar-header{
+    background-color: rgba(48, 0, 0, 1);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -301,7 +310,14 @@ h2 {
     font-size: 18px;
     margin-bottom: 20px;
 }
-
+.video-title a{
+    color: rgb(177, 3, 3);
+    text-decoration: none;
+}
+.video-title a:hover{
+    color: rgb(215, 65, 65);
+    text-decoration: none;
+}
 /* Button Containers */
 .button-container {
     margin-top: 10px;
@@ -344,7 +360,7 @@ h2 {
 /* Right Content */
 .right-aside {
     grid-area: right-aside;
-    background-color: #FFD700;
+    background-color: whitesmoke;
     /* flex: 0 0 33.333333%; */
     /* max-width: 33.333333%; */
 }
