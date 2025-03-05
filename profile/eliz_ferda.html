@@ -1,0 +1,692 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Eliz Ferda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgba(48, 0, 0, .6);
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+
+        /* Header Styles */
+        .ll_header {
+            grid-area: header;
+            height: 50px;
+            background-color: rgba(48, 0, 0, 1);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            padding-left: 10%;
+
+        }
+
+        .nav-links {
+            padding-right: 8.5%;
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive for Mobile */
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+
+        @media (max-width: 768px) {
+            body {
+                grid-template-areas:
+                    "header"
+                    "main"
+                    "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr auto;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                background-color: rgba(48, 0, 0, 0.5);
+                width: 100%;
+                padding: 10px 0;
+                z-index: 5;
+            }
+
+            .nav-links li {
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        /* Profile Header */
+        .profile_header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: left;
+            gap: 20px;
+            padding: 20px;
+            background-color: rgba(48, 0, 0, 1);
+            color: #fff;
+            border-radius: 10px;
+            width: 80%;
+            margin: 20px auto;
+            min-height: 200px;
+            position: relative;
+            flex-wrap: wrap;
+            /* Allows items to wrap on small screens */
+        }
+
+        /* Profile Picture */
+        .profile_pic {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 4px solid red;
+            flex-shrink: 0;
+            /* Prevents shrinking */
+        }
+
+        .profile_img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Live Icon */
+        @keyframes blink {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .live_icon {
+            position: absolute;
+            bottom: 0px;
+            background-color: red;
+            padding: 5px 30px;
+            color: white;
+            border-radius: 10%;
+            font-weight: bold;
+            animation: blink 1s infinite;
+
+        }
+
+        .live_btn {
+            animation: blink 1s infinite;
+        }
+
+        /* Profile Buttons */
+        .profile_buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            height: 100%;
+        }
+
+        .profile_detail {
+            font-size: 30px;
+            color: #fff;
+            margin-bottom: 20px;
+            justify-content: flex-start;
+        }
+
+        /* Hobbies */
+        .hobbies {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        /* Country */
+        .country {
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        /* Profile Buttons */
+        .btn_container {
+            margin-bottom: 10px;
+        }
+
+        .btn_container ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            gap: 10px;
+            flex-wrap: wrap;
+            /* Wraps buttons on smaller screens */
+        }
+
+        .btn_container li {
+            display: inline-block;
+        }
+
+        .btn_container a {
+            text-decoration: none;
+            padding: 6px 14px;
+            background-color: rgb(227, 223, 223);
+            color: red;
+            border-radius: 5px;
+            transition: 0.3s;
+            border-left: 2px solid red;
+            border-bottom: 5px solid red;
+        }
+
+        .btn_container a:hover {
+            background-color: red;
+            color: white;
+        }
+
+        /* Recent Uploads */
+        /* .recent_uploads {
+    height: 600px;
+    background-color: #0056b3;
+} */
+
+        /* Responsive Design */
+
+        /* 📱 Mobile (max-width: 768px) */
+        @media screen and (max-width: 768px) {
+            .profile_header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+                height: auto;
+                padding: 10px;
+            }
+
+            .profile_pic {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile_buttons {
+                align-items: center;
+            }
+
+            .hobbies {
+                font-size: 18px;
+            }
+
+            .country {
+                font-size: 14px;
+            }
+
+            .btn_container ul {
+                justify-content: center;
+            }
+
+            .btn_container a {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+
+            .live_icon {
+                font-size: 12px;
+                padding: 4px 15px;
+            }
+
+            .recent_uploads {
+                height: auto;
+            }
+        }
+
+        /* 💻 Tablet (max-width: 1024px) */
+        @media screen and (max-width: 1024px) {
+            /* .profile_header {
+                width: 90%;
+            } */
+
+            .profile_pic {
+                width: 140px;
+                height: 140px;
+            }
+
+            .hobbies {
+                font-size: 20px;
+            }
+
+            .btn_container a {
+                padding: 7px 14px;
+            }
+        }
+
+        /* Base Styles */
+        .recent_uploads {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(48, 0, 0, .6);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .recent_uploads h2 {
+            text-align: left;
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        /* Scrollable Container */
+        .uploads_scroll {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Upload Card (Default: Horizontal for larger screens) */
+        .upload_card {
+            display: flex;
+
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            width: 100%;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .upload_card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Media (Image or Video) */
+        .media_container {
+            width: 40%;
+            height: 240px;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .media_container img,
+        .media_container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Media Label (Video or Image) */
+        .media_label {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 5px;
+        }
+
+        /* Upload Info */
+        .upload_info {
+            width: 60%;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 240px;
+        }
+
+        /* Title at the Top */
+        .upload_info h3 {
+            font-size: 24px;
+            color: black;
+            margin-bottom: 5px;
+        }
+
+        /* Description in the Middle */
+        .upload_info p {
+            font-size: 18px;
+            color: #666;
+            flex-grow: 1;
+            margin-bottom: 8px;
+        }
+
+        /* Stats at the Bottom */
+        .stats {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 14px;
+            color: gray;
+        }
+
+        /* Action Buttons */
+        .actions {
+            display: flex;
+            justify-content: left;
+            margin-top: 10px;
+            gap: 20px;
+        }
+
+        .like_btn,
+        .view_btn,
+        .watch_btn {
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .like_btn {
+            background-color: #ff4d4d;
+            color: white;
+        }
+
+        .like_btn:hover {
+            background-color: #e60000;
+        }
+
+        .view_btn,
+        .watch_btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .view_btn:hover,
+        .watch_btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* 🔹 RESPONSIVE DESIGN 🔹 */
+        @media screen and (max-width: 600px) {
+            .profile_header {
+                width: 90%;
+            }
+
+            .recent_uploads {
+                width: 90%;
+                height: auto;
+            }
+
+            .upload_card {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .media_container {
+                width: 100%;
+                height: auto;
+            }
+
+            .upload_info {
+                width: 100%;
+                padding: 15px;
+                height: auto;
+            }
+
+            /* Title at the Top */
+            .upload_info h3 {
+                font-size: 20px;
+                color: black;
+                margin-bottom: 5px;
+            }
+
+            /* Description in the Middle */
+            .upload_info p {
+                font-size: 14px;
+                color: #666;
+                flex-grow: 1;
+                margin-bottom: 8px;
+            }
+
+            .stats {
+                flex-direction: row;
+                justify-content: left;
+                gap: 10px;
+            }
+
+            .actions {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            .like_btn,
+            .view_btn,
+            .watch_btn {
+                width: 48%;
+                text-align: center;
+            }
+        }
+
+        /* Footer */
+        footer {
+            grid-area: footer;
+            background-color: rgba(48, 0, 0, 1);
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
+    <style>
+        body {
+            height: 100%;
+        }
+
+        .ads_link {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.0);
+            /* Semi-transparent black */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: default;
+            z-index: 9999;
+            /* Ensure it covers everything */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ads_link">
+
+    </div>
+    <header class="ll_header">
+        <div class="logo">PinayRedLink</div>
+        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+        <ul class="nav-links">
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Category</a></li>
+            <li><a href="#">Upload</a></li>
+            <li><a href="#">Sign In</a></li>
+        </ul>
+    </header>
+    <div class="profile_header">
+        <div class="profile_pic">
+            <img class="profile_img" src="images/profile_pic.jpg" alt="">
+            <span class="live_icon">Live</span>
+        </div>
+        <div class="profile_buttons">
+            <div class="profile_detail">
+                <span>Eliz Ferda</span>
+            </div>
+            <div class="country">
+                <span>Philippines</span>
+            </div>
+            <div class="hobbies">
+                <span>Singing | Dancing</span>
+            </div>
+            <div class="btn_container">
+                <ul>
+                    <li><a href="https://paypou.com/NPJThFK6h/78784625">Photos</a></li>
+                    <li><a href="https://urlef.com/B76NJA2o/78784625">Videos</a></li>
+                    <li><a href="https://recutt.com/yR6HZcQH/78784625" class="live_btn">Live show</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="recent_uploads">
+        <h2>Recent Uploads</h2>
+        <div class="uploads_scroll">
+            <!-- Sample Upload 1 (Image) -->
+            <a href="https://cutpu.com/h1LDvMmW/78784625" class="upload_card">
+                <div class="media_container">
+                    <img src="images/sample1.jpg" alt="Sample Image">
+                    <span class="media_label">Image</span>
+                </div>
+                <div class="upload_info">
+                    <h3>Less is more… or is it? 👀🔥</h3>
+                    <p>Just me, the camera, and a little bit of magic.</p>
+                    <div class="stats">
+
+                        <span>120 Likes</span>
+                        <span>3.5K Views</span>
+                        <span>Uploaded · 1 week ago</span>
+                    </div>
+                    <div class="actions">
+                        <button class="like_btn">Like</button>
+                        <button class="view_btn">View</button>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Sample Upload 2 (Video) -->
+            <a href="https://shrtq.com/qKZPeW3/78784625" class="upload_card">
+                <div class="media_container">
+                    <video src="images/profile_vid.mp4" muted></video>
+                    <span class="media_label">Video</span>
+                </div>
+                <div class="upload_info">
+                    <h3>Confidence looks good in motion. 💃🔥</h3>
+                    <p>No filters. No limits. Just me. ✨</p>
+                    <div class="stats">
+                        <span>350 Likes</span>
+                        <span>8.2K Views</span>
+                        <span>Uploaded · 2 months ago</span>
+                    </div>
+                    <div class="actions">
+                        <button class="like_btn">Like</button>
+                        <button class="watch_btn">Watch</button>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <footer>
+        <p>© 2025 PinayRedLink. All Rights Reserved.</p>
+    </footer>
+
+
+    <!-- JavaScript to Autoplay Video on Hover -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const adsLink = document.querySelector(".ads_link");
+
+            adsLink.addEventListener("click", function () {
+                window.open("https://moviesx.me/8K4Qjyn/78784625", "_blank"); // Open new tab
+                adsLink.style.display = "none"; // Hide the ad overlay
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const videoContainers = document.querySelectorAll(".upload_card video");
+
+            videoContainers.forEach(video => {
+                video.addEventListener("mouseenter", () => {
+                    video.play(); // Play video on hover
+                });
+
+                video.addEventListener("mouseleave", () => {
+                    video.pause(); // Pause when mouse leaves
+                    video.currentTime = 0; // Reset video to the start
+                });
+            });
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>
